@@ -26,7 +26,7 @@ quedan fuera del alcance actual.
 
 ## Estructura del repositorio
 ```
-fruta-ia/
+AppFruta/
 ├── data/
 │   ├── raw/          ← Imágenes originales (no incluidas en el repo)
 │   └── processed/    ← Imágenes preprocesadas (no incluidas en el repo)
