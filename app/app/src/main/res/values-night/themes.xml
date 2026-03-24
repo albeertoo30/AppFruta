@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.AppFruta" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/fruit_secondary</item>
+        <item name="colorOnPrimary">@color/fruit_on_primary</item>
+        <item name="colorSecondary">@color/fruit_primary</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+    </style>
+</resources>

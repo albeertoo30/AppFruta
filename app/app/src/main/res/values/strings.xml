@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FrutaIA</string>
+    <string name="main_title">FrutaIA</string>
+    <string name="main_subtitle">Analiza frutas y verduras con IA en segundos</string>
+    <string name="open_camera">Abrir camara</string>
+    <string name="select_gallery">Seleccionar desde galeria</string>
+    <string name="analyze_again">Analizar otra fruta</string>
+    <string name="result_title">Resultado del analisis</string>
+    <string name="camera_permission_needed">Se necesita permiso de camara para tomar una foto.</string>
+    <string name="image_error">No se pudo cargar la imagen seleccionada.</string>
+    <string name="analysis_error">No se pudo analizar la imagen. Verifica que modelo_fruta.tflite exista en assets/.</string>
+    <string name="logo_description">Icono FrutaIA</string>
+    <string name="result_image_description">Imagen de fruta analizada</string>
+    <string name="state_fresh">Fresca</string>
+    <string name="state_rotten">En mal estado</string>
+    <string name="state_fresh_message">La fruta luce en buen estado.</string>
+    <string name="state_rotten_message">La fruta podria estar deteriorada.</string>
+    <string name="confidence_format">%1$d%% de confianza</string>
+</resources>

@@ -16,7 +16,7 @@ print("\nConvirtiendo a TFLite...")
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 
 # Optimización: reduce el tamaño del modelo sin perder precisión
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
+# converter.optimizations = [tf.lite.Optimize.DEFAULT]
 
 tflite_model = converter.convert()
 print("Conversión completada")

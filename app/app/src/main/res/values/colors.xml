@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fruit_primary">#2E7D32</color>
+    <color name="fruit_secondary">#4CAF50</color>
+    <color name="fruit_alert">#FF6F00</color>
+    <color name="fruit_fresh">#2E7D32</color>
+    <color name="fruit_rotten">#E65100</color>
+    <color name="fruit_background">#F6FBF5</color>
+    <color name="fruit_surface">#FFFFFFFF</color>
+    <color name="fruit_on_primary">#FFFFFFFF</color>
+    <color name="fruit_on_surface">#1E1E1E</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

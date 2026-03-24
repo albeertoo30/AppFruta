@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.AppFruta" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/fruit_primary</item>
+        <item name="colorOnPrimary">@color/fruit_on_primary</item>
+        <item name="colorSecondary">@color/fruit_secondary</item>
+        <item name="colorSurface">@color/fruit_surface</item>
+        <item name="colorOnSurface">@color/fruit_on_surface</item>
+        <item name="android:statusBarColor">@color/fruit_background</item>
+        <item name="android:navigationBarColor">@color/fruit_background</item>
+    </style>
+
+    <style name="Theme.AppFruta" parent="Base.Theme.AppFruta" />
+</resources>
