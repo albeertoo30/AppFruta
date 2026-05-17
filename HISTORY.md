@@ -2,7 +2,7 @@
 
 ---
 
-## Sesión 2 — 2026-05-16
+## Sesión 1 — 2026-05-16
 
 ### Objetivo
 Implementar la Fase 1 del roadmap: autenticación con Firebase (email/contraseña + Google Sign-In).
@@ -53,12 +53,3 @@ Implementar la Fase 1 del roadmap: autenticación con Firebase (email/contraseñ
 - [ ] Pulir UX: mensajes de error más específicos de Firebase, estado de carga
 
 ---
-
-## Sesión 1 — fecha desconocida
-
-Primera versión funcional de la PoC:
-- Modelo TFLite integrado (`modelo_fruta.tflite`, 9,2 MB, float32, MobileNetV2)
-- `FruitAnalyzer.kt`: preprocesado 224×224, normalización 0-1, umbral 0.5
-- `MainActivity.kt`: captura con cámara (FileProvider) y selección de galería
-- `ResultActivity.kt`: muestra resultado con color y porcentaje de confianza
-- Build system: Gradle 8.7 + AGP 8.5.2 + Kotlin 2.0.21
