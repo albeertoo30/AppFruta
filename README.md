@@ -1,5 +1,5 @@
 # AppFruta
-# Fruta IA — Detector de estado de frutas y verduras
+## Detector de estado de frutas y verduras
 
 Aplicación móvil Android que utiliza inteligencia artificial para detectar
 si una fruta o verdura está en buen o mal estado a través de una fotografía.
@@ -63,7 +63,7 @@ AppFruta/
 ### App
 
 1. Abrir la carpeta `app/` con Android Studio
-2. Asegurarse de que el archivo `modelo_fruta.tflite` está en `app/src/main/assets/`
+2. Asegurarse de que el archivo `modelo_fruta.tflite` está en `app/app/src/main/assets/`
 3. Ejecutar en emulador o dispositivo físico
 
 ---
