@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.io.InputStream
 
@@ -48,11 +49,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    override fun onStart() {
+        super.onStart()
+        if (FirebaseAuth.getInstance().currentUser == null) {
+            goToLogin()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         analyzer = FruitAnalyzer(this)
+
+        findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            goToLogin()
+        }
 
         findViewById<MaterialButton>(R.id.btnCamera).setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -125,5 +138,12 @@ class MainActivity : AppCompatActivity() {
             putExtra(ResultActivity.EXTRA_CONFIDENCE, confidence)
         }
         startActivity(intent)
+    }
+
+    private fun goToLogin() {
+        startActivity(Intent(this, LoginActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        })
+        finish()
     }
 }

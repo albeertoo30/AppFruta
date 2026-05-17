@@ -16,4 +16,26 @@
     <string name="state_fresh_message">La fruta luce en buen estado.</string>
     <string name="state_rotten_message">La fruta podria estar deteriorada.</string>
     <string name="confidence_format">%1$d%% de confianza</string>
+
+    <!-- Autenticación -->
+    <string name="login_title">Bienvenido</string>
+    <string name="login_subtitle">Inicia sesión para analizar tus frutas</string>
+    <string name="register_title">Crear cuenta</string>
+    <string name="register_subtitle">Únete a FrutaIA</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_register">Crear cuenta</string>
+    <string name="btn_google">Continuar con Google</string>
+    <string name="btn_go_register">¿No tienes cuenta? Regístrate</string>
+    <string name="btn_go_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="btn_logout">Cerrar sesión</string>
+    <string name="error_empty_fields">Rellena todos los campos</string>
+    <string name="error_login">Correo o contraseña incorrectos</string>
+    <string name="error_google_login">No se pudo iniciar sesión con Google</string>
+    <string name="error_passwords_no_match">Las contraseñas no coinciden</string>
+    <string name="error_password_too_short">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_register">No se pudo crear la cuenta. Puede que el correo ya esté en uso.</string>
+    <string name="register_success">¡Cuenta creada correctamente!</string>
 </resources>

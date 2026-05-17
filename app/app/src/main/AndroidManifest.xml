@@ -14,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppFruta">
         <activity
-            android:name=".ResultActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
 
         <!-- FileProvider: permite compartir imagen temporal de forma segura con la camara. -->
         <provider
