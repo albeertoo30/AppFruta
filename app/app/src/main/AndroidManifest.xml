@@ -35,6 +35,10 @@
             android:name=".ResultActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="false" />
+
         <!-- FileProvider: permite compartir imagen temporal de forma segura con la camara. -->
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
 
         analyzer = FruitAnalyzer(this)
 
+        findViewById<MaterialButton>(R.id.btnInventory).setOnClickListener {
+            startActivity(Intent(this, InventoryActivity::class.java))
+        }
+
         findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             goToLogin()

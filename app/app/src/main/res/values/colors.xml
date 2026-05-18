@@ -9,6 +9,8 @@
     <color name="fruit_surface">#FFFFFFFF</color>
     <color name="fruit_on_primary">#FFFFFFFF</color>
     <color name="fruit_on_surface">#1E1E1E</color>
+    <color name="fruit_fresh_bg">#C8E6C9</color>
+    <color name="fruit_rotten_bg">#FFCCBC</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

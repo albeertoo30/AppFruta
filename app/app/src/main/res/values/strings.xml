@@ -38,4 +38,24 @@
     <string name="error_password_too_short">La contraseña debe tener al menos 6 caracteres</string>
     <string name="error_register">No se pudo crear la cuenta. Puede que el correo ya esté en uso.</string>
     <string name="register_success">¡Cuenta creada correctamente!</string>
+
+    <!-- Inventario -->
+    <string name="inventory_title">Mi inventario</string>
+    <string name="inventory_empty">Tu inventario está vacío</string>
+    <string name="fab_add_fruit">Añadir alimento</string>
+    <string name="btn_add_to_inventory">Añadir al inventario</string>
+    <string name="btn_inventory">Ver inventario</string>
+    <string name="hint_fruit_name">Nombre del alimento</string>
+    <string name="hint_quantity">Cantidad</string>
+    <string name="hint_expiry_date">Fecha de caducidad</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="dialog_add_title">Añadir alimento</string>
+    <string name="dialog_edit_title">Editar alimento</string>
+    <string name="quantity_format">x%1$d</string>
+    <string name="expiry_format">Caduca: %1$s</string>
+    <string name="item_deleted">Alimento eliminado</string>
+    <string name="undo">Deshacer</string>
+    <string name="error_empty_name">Introduce un nombre</string>
+    <string name="error_save">No se pudo guardar. Inténtalo de nuevo.</string>
 </resources>

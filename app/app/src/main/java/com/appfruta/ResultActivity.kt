@@ -28,6 +28,7 @@ class ResultActivity : AppCompatActivity() {
         val tvResultStatus = findViewById<TextView>(R.id.tvResultStatus)
         val tvResultMessage = findViewById<TextView>(R.id.tvResultMessage)
         val tvResultConfidence = findViewById<TextView>(R.id.tvResultConfidence)
+        val btnAddToInventory = findViewById<MaterialButton>(R.id.btnAddToInventory)
         val btnAnalyzeAgain = findViewById<MaterialButton>(R.id.btnAnalyzeAgain)
 
         if (!imagePath.isNullOrBlank()) {
@@ -50,6 +51,11 @@ class ResultActivity : AppCompatActivity() {
 
         val confidencePercent = (confidence * 100).toInt()
         tvResultConfidence.text = getString(R.string.confidence_format, confidencePercent)
+
+        btnAddToInventory.setOnClickListener {
+            AddFruitDialogFragment.newInstance(label = label, confidence = confidence)
+                .show(supportFragmentManager, "add_fruit")
+        }
 
         btnAnalyzeAgain.setOnClickListener {
             finish()

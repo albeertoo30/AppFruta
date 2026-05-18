@@ -41,15 +41,54 @@ Implementar la Fase 1 del roadmap: autenticación con Firebase (email/contraseñ
 - `MainActivity.kt` — `onStart()` redirige a login si no hay sesión activa; botón "Cerrar sesión"
 - `activity_main.xml` — Botón `btnLogout` añadido dentro de la card
 
-### Estado al finalizar
+### Estado al finalizar — FASE 1 COMPLETADA ✅
 - Build compila limpio (`assembleDebug` OK)
-- Pendiente: probar flujo completo en emulador/dispositivo
-- Pendiente: verificar Google Sign-In en dispositivo real (requiere SHA-1 en Firebase y app instalada via Play o debug)
+- Validado en dispositivo físico Samsung A17 (2026-05-17):
+  - Login con email/contraseña ✅
+  - Login con Google Sign-In ✅
+  - Registro de nuevo usuario ✅
+  - Flujo de navegación correcto ✅
 
-### Próximos pasos (Fase 1 restante)
-- [ ] Probar LoginActivity y RegisterActivity en emulador
-- [ ] Verificar flujo Google Sign-In en dispositivo físico
-- [ ] Añadir perfil de usuario básico (nombre, foto)
-- [ ] Pulir UX: mensajes de error más específicos de Firebase, estado de carga
+---
+
+## Sesión 2 — 2026-05-17
+
+### Objetivo
+Implementar la Fase 2 del roadmap: Inventario de frutas con Firestore.
+
+### Cambios en Gradle
+
+**`app/gradle/libs.versions.toml`**
+- Añadidas versiones: `recyclerview = "1.3.2"`, `coroutines = "1.7.3"`
+- Añadidas librerías: `androidx-recyclerview`, `firebase-firestore-ktx`, `kotlinx-coroutines-android`, `kotlinx-coroutines-play-services`
+
+**`app/app/build.gradle.kts`**
+- Dependencias de RecyclerView, Firestore y corrutinas añadidas
+
+### Firestore — Modelo de datos
+- Colección: `users/{uid}/inventory/{itemId}`
+- Campos: `name`, `quantity`, `expiryDate`, `label`, `confidence`, `addedAt`
+
+### Archivos nuevos
+- `FruitItem.kt` — Data class con `@DocumentId`, mapeada a Firestore
+- `InventoryRepository.kt` — CRUD + `callbackFlow` para lista en tiempo real (ordenada por `expiryDate`)
+- `InventoryActivity.kt` — RecyclerView + swipe-to-delete + Snackbar Deshacer + FAB
+- `FruitItemAdapter.kt` — `ListAdapter` con `DiffUtil`, chip fresh/rotten con colores
+- `AddFruitDialogFragment.kt` — `BottomSheetDialogFragment` para añadir/editar; `MaterialDatePicker` para fecha
+- `activity_inventory.xml` — CoordinatorLayout + MaterialToolbar + RecyclerView + FAB
+- `item_fruit.xml` — Fila card con nombre, fecha, cantidad y chip de estado
+- `fragment_add_fruit.xml` — Bottom Sheet con campos nombre, cantidad, fecha
+
+### Archivos modificados
+- `ResultActivity.kt` + `activity_result.xml` — Botón "Añadir al inventario" que abre `AddFruitDialogFragment` con `label`/`confidence` pre-rellenados
+- `MainActivity.kt` + `activity_main.xml` — Botón "Ver inventario" que lanza `InventoryActivity`
+- `AndroidManifest.xml` — `InventoryActivity` registrada
+- `strings.xml` — 18 strings nuevos del inventario
+- `colors.xml` — `fruit_fresh_bg` (#C8E6C9) y `fruit_rotten_bg` (#FFCCBC) para chips
+
+### Estado al finalizar
+- `BUILD SUCCESSFUL` — sin errores ni warnings
+- Pendiente: probar flujo completo en dispositivo físico
+- Pendiente: configurar reglas de seguridad en Firestore console (`users/{uid}/inventory` → solo el propio usuario)
 
 ---
