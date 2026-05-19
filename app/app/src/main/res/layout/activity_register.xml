@@ -1,74 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fruit_background"
-    android:padding="24dp">
+    android:background="@color/fruit_background">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/fruit_surface"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp">
+            android:orientation="vertical"
+            android:paddingBottom="40dp"
+            android:paddingHorizontal="28dp"
+            android:paddingTop="64dp">
 
+            <!-- Logo -->
             <ImageView
                 android:id="@+id/logoImageView"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/logo_description"
-                android:src="@drawable/ic_fruit_logo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/ic_fruit_logo" />
 
+            <!-- Titulo -->
             <TextView
                 android:id="@+id/titleTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
                 android:text="@string/register_title"
                 android:textColor="@color/fruit_primary"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logoImageView" />
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
+            <!-- Subtitulo -->
             <TextView
                 android:id="@+id/subtitleTextView"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.55"
                 android:gravity="center"
                 android:text="@string/register_subtitle"
                 android:textColor="@color/fruit_on_surface"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+                android:textSize="15sp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <!-- Campo nombre (primero) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo email -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEmail"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
                 android:hint="@string/hint_email"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/subtitleTextView">
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
@@ -78,17 +97,19 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Campo contraseña -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:hint="@string/hint_password"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilEmail">
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
@@ -98,17 +119,19 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Campo confirmar contraseña -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilConfirmPassword"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:hint="@string/hint_confirm_password"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilPassword">
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etConfirmPassword"
@@ -118,46 +141,43 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Boton principal: Crear cuenta -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingVertical="12dp"
+                android:layout_marginTop="28dp"
+                android:paddingVertical="14dp"
                 android:text="@string/btn_register"
                 android:textAllCaps="false"
+                android:textSize="16sp"
                 app:backgroundTint="@color/fruit_primary"
-                app:cornerRadius="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilConfirmPassword" />
+                app:cornerRadius="28dp" />
 
+            <!-- Enlace a login -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGoLogin"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:text="@string/btn_go_login"
                 android:textAllCaps="false"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnRegister" />
+                android:textColor="@color/fruit_primary"
+                android:textSize="14sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 
+    <!-- Indicador de carga superpuesto al centro -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:indicatorColor="@color/fruit_primary" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

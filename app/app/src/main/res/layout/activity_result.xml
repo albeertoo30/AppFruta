@@ -1,141 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fruit_background"
-    android:padding="20dp"
-    tools:context=".ResultActivity">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/tvResultTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/result_title"
-        android:textColor="@color/fruit_primary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--
+      layout_height="match_parent" + fillViewport="true" permite usar layout_weight
+      en los espaciadores para centrar verticalmente el bloque de resultado.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="40dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/imageCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="2dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvResultTitle">
+        <!-- Imagen analizada: 200x200dp centrada, sin recorte, sin borde ni sombra -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageCard"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-        <ImageView
-            android:id="@+id/ivResultPhoto"
+            <ImageView
+                android:id="@+id/ivResultPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/result_image_description"
+                android:scaleType="centerInside"
+                tools:src="@tools:sample/avatars" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Espacio flexible superior: centra el bloque de resultado bajo la imagen -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/result_image_description"
-            android:scaleType="centerCrop"
-            tools:src="@tools:sample/avatars" />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/resultCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageCard">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <!-- Icono + etiqueta de estado centrados horizontalmente -->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ivResultStatusIcon"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                app:layout_constraintBottom_toBottomOf="@id/tvResultStatus"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvResultStatus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 tools:src="@android:drawable/checkbox_on_background" />
 
             <TextView
                 android:id="@+id/tvResultStatus"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:textAlignment="center"
+                android:textSize="40sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ivResultStatusIcon"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Fresca" />
+                tools:text="Fresca"
+                tools:textColor="@color/fruit_fresh" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvResultMessage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/fruit_on_surface"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvResultStatus"
-                tools:text="La fruta luce en buen estado." />
+        <!-- Confianza: secundaria, centrada -->
+        <TextView
+            android:id="@+id/tvResultConfidence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="0.5"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/fruit_on_surface"
+            android:textSize="15sp"
+            tools:text="93% de confianza" />
 
-            <TextView
-                android:id="@+id/tvResultConfidence"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/fruit_primary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvResultMessage"
-                tools:text="93% de confianza" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <!-- Mensaje: terciario, centrado -->
+        <TextView
+            android:id="@+id/tvResultMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:alpha="0.55"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/fruit_on_surface"
+            android:textSize="14sp"
+            tools:text="La fruta luce en buen estado." />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddToInventory"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/btn_add_to_inventory"
-        android:textAllCaps="false"
-        app:cornerRadius="16dp"
-        app:icon="@android:drawable/ic_input_add"
-        app:iconGravity="textStart"
-        app:strokeColor="@color/fruit_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resultCard" />
+        <!-- Espacio flexible inferior: empuja los botones hacia el fondo -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAnalyzeAgain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/analyze_again"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/fruit_primary"
-        app:cornerRadius="16dp"
-        app:icon="@android:drawable/ic_popup_sync"
-        app:iconGravity="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAddToInventory" />
+        <!-- Accion principal: añadir al inventario (filled, pildora) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddToInventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="14dp"
+            android:text="@string/btn_add_to_inventory"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:backgroundTint="@color/fruit_primary"
+            app:cornerRadius="28dp"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Accion secundaria: analizar otra fruta (discreta) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnalyzeAgain"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:alpha="0.6"
+            android:text="@string/analyze_again"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

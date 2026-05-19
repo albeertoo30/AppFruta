@@ -8,57 +8,69 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="4dp"
     app:cardBackgroundColor="@color/fruit_surface"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="1dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp">
 
+        <!-- Nombre: texto principal, bold -->
         <TextView
             android:id="@+id/tvFruitName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/fruit_on_surface"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/chipFruitStatus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Manzana" />
 
+        <!-- Badge de estado: chip compacto sin borde, colores asignados por codigo -->
         <com.google.android.material.chip.Chip
             android:id="@+id/chipFruitStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
             android:focusable="false"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            app:chipMinHeight="26dp"
+            app:chipStrokeWidth="0dp"
+            app:ensureMinTouchTargetSize="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Fresca" />
+            tools:chipBackgroundColor="@color/fruit_fresh_bg"
+            tools:text="Fresca"
+            tools:textColor="@color/fruit_fresh" />
 
+        <!-- Fecha de caducidad: texto secundario, alpha reducido -->
         <TextView
             android:id="@+id/tvFruitExpiry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
+            android:alpha="0.55"
             android:textColor="@color/fruit_on_surface"
-            android:textSize="13sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@id/tvFruitQuantity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFruitName"
             tools:text="Caduca: 25/12/2026" />
 
+        <!-- Cantidad: secundaria, mismo nivel que fecha -->
         <TextView
             android:id="@+id/tvFruitQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/fruit_primary"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:alpha="0.55"
+            android:textColor="@color/fruit_on_surface"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chipFruitStatus"
             tools:text="x2" />

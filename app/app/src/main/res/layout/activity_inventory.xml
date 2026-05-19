@@ -10,7 +10,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -37,9 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:alpha="0.45"
         android:text="@string/inventory_empty"
         android:textColor="@color/fruit_on_surface"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:visibility="gone"
         tools:visibility="visible" />
 

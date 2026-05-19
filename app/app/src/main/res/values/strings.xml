@@ -22,6 +22,7 @@
     <string name="login_subtitle">Inicia sesión para analizar tus frutas</string>
     <string name="register_title">Crear cuenta</string>
     <string name="register_subtitle">Únete a FrutaIA</string>
+    <string name="hint_name">Nombre completo</string>
     <string name="hint_email">Correo electrónico</string>
     <string name="hint_password">Contraseña</string>
     <string name="hint_confirm_password">Confirmar contraseña</string>

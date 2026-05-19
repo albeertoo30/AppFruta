@@ -57,31 +57,45 @@ AppFruta/
 
 ---
 
-## Estado actual de la aplicación (PoC funcional)
+## Estado actual de la aplicación
 
-La PoC implementa el flujo core completo:
+### Flujo core (funcional desde la PoC)
 1. Usuario captura foto con cámara o selecciona desde galería
 2. FruitAnalyzer preprocesa el Bitmap (redimensión 224×224, normalización 0-1)
 3. Inferencia con TFLite → output float32 en rango [0,1]
 4. Umbral 0.5: < 0.5 = fresh, > 0.5 = rotten
 5. ResultActivity muestra resultado con código de color y porcentaje de confianza
 
+### Fases completadas
+- **Fase 1 — Autenticación** ✅: Login email+contraseña, Google Sign-In, registro. Validado en Samsung A17.
+- **Fase 2 — Inventario** ✅ (build OK, pendiente prueba en dispositivo): Firestore CRUD, RecyclerView, swipe-to-delete, bottom sheet añadir/editar.
+
+### Rediseño de interfaz (EN CURSO — Sesión 3)
+Sistema de diseño minimalista aplicado. Archivos rediseñados: `activity_login.xml`, `activity_register.xml`, `activity_main.xml`, `activity_result.xml`, `activity_inventory.xml`, `item_fruit.xml`.
+
+**Pendiente de rediseñar:** `fragment_add_fruit.xml` (bottom sheet añadir/editar fruta).
+
+### Próxima tarea al retomar la sesión
+1. **Rediseñar `fragment_add_fruit.xml`** — último archivo de UI pendiente. Mantener el mismo sistema: sin sombras, campos OutlinedBox 12dp, botón filled verde pildora, tipografía con alpha reducido para secundarios.
+2. **Probar rediseño completo en dispositivo físico** — especialmente `activity_result.xml` (imagen 200×200dp `centerInside`, bloque de resultado centrado verticalmente con weight).
+3. **Continuar con Fase 3 — Notificaciones push** (FCM, alertas configurables de caducidad, notificaciones locales programadas).
+
 ---
 
 ## Roadmap de desarrollo (próximas fases)
 
-### Fase 1 — Autenticación e infraestructura (EN CURSO)
-- [ ] Integrar Firebase en el proyecto (google-services.json)
-- [ ] Pantalla de registro e inicio de sesión (email/contraseña + Google Sign-In)
-- [ ] Perfil de usuario básico
-- [ ] Navegación correcta: login → main flow
+### Fase 1 — Autenticación e infraestructura ✅ COMPLETADA
+- [x] Integrar Firebase en el proyecto (google-services.json)
+- [x] Pantalla de registro e inicio de sesión (email/contraseña + Google Sign-In)
+- [x] Perfil de usuario básico
+- [x] Navegación correcta: login → main flow
 
-### Fase 2 — Inventario de frutas
-- [ ] Pantalla de inventario con lista de alimentos
-- [ ] Al analizar fruta, opción de añadirla al inventario
-- [ ] Formulario: nombre, cantidad, fecha de caducidad
-- [ ] Firestore como base de datos del inventario por usuario
-- [ ] Editar y eliminar entradas
+### Fase 2 — Inventario de frutas ✅ COMPLETADA (pendiente prueba en dispositivo)
+- [x] Pantalla de inventario con lista de alimentos
+- [x] Al analizar fruta, opción de añadirla al inventario
+- [x] Formulario: nombre, cantidad, fecha de caducidad
+- [x] Firestore como base de datos del inventario por usuario
+- [x] Editar y eliminar entradas
 
 ### Fase 3 — Notificaciones push de caducidad
 - [ ] Integrar Firebase Cloud Messaging (FCM)

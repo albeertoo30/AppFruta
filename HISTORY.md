@@ -92,3 +92,72 @@ Implementar la Fase 2 del roadmap: Inventario de frutas con Firestore.
 - Pendiente: configurar reglas de seguridad en Firestore console (`users/{uid}/inventory` → solo el propio usuario)
 
 ---
+
+## Sesión 3 — 2026-05-19
+
+### Objetivo
+Rediseño completo de la interfaz: sistema de diseño minimalista (blancos y verdes, sin tarjetas flotantes ni sombras).
+
+### Sistema de diseño aplicado
+- Fondo directo `fruit_background` (#F6FBF5), sin cards superpuestas
+- Botones principales: filled verde pildora (`cornerRadius="28dp"`)
+- Botones secundarios: `OutlinedButton` o `TextButton` según jerarquía
+- Campos de texto: `OutlinedBox` con `boxCornerRadius=12dp` en las cuatro esquinas
+- Espaciado generoso, tipografía con alpha reducido para jerarquía secundaria
+- Sin sombras ni bordes decorativos en ningún componente
+
+### Pantallas rediseñadas
+
+**`activity_login.xml`**
+- `FrameLayout` raíz + `ScrollView` (fillViewport, sin scrollbars)
+- Logo 96dp, título 32sp bold verde, subtítulo alpha=0.55
+- Campos email + contraseña: `OutlinedBox`, `boxCornerRadius=12dp`, `endIconMode=password_toggle` en password
+- `btnLogin`: filled verde, cornerRadius=28dp, paddingVertical=14dp
+- `btnGoogle`: OutlinedButton, strokeColor=#DEDEDE (sutil), icono `ic_google` (vector multicolor)
+- `btnGoRegister`: TextButton verde centrado
+- `CircularProgressIndicator` superpuesto vía `FrameLayout`
+
+**`activity_register.xml`**
+- Misma estructura que login
+- Campo `tilName`/`etName` añadido como primero (inputType=textPersonName|textCapWords)
+- Cuatro campos en orden: nombre, email, contraseña, confirmar contraseña
+- `btnRegister`: filled verde; `btnGoLogin`: TextButton verde
+
+**`activity_main.xml`**
+- `LinearLayout` vertical con dos `View` weight para centrado flexible
+- Logo 80dp, título 32sp, subtítulo alpha=0.55
+- `btnCamera`: filled verde, paddingVertical=20dp, iconSize=22dp — jerarquía principal
+- `btnGallery`: OutlinedButton verde, paddingVertical=14dp — captura secundaria
+- Espaciador weight=0.4 separa captura de navegación
+- `btnInventory`: OutlinedButton verde secundario — navegación
+- `btnLogout`: TextButton, alpha=0.45 — utilidad discreta
+
+**`activity_result.xml`**
+- `ScrollView` (fillViewport) + `LinearLayout` height=match_parent (habilita weight)
+- `imageCard`: 200dp×200dp, `layout_gravity=center_horizontal`, marginTop=40dp, cornerRadius=12dp, sin sombra ni borde
+- `ivResultPhoto`: `scaleType=centerInside` (imagen completa, sin recorte)
+- Dos `View` weight=1 flanqueando el bloque de resultado para centrado vertical
+- Bloque resultado: icono 36dp + `tvResultStatus` 40sp bold centrado en fila horizontal
+- `tvResultConfidence`: 15sp, alpha=0.5, centrado
+- `tvResultMessage`: 14sp, alpha=0.55, centrado
+- `btnAddToInventory`: filled verde (acción principal)
+- `btnAnalyzeAgain`: TextButton, alpha=0.6 (acción secundaria)
+
+**`activity_inventory.xml`**
+- `AppBarLayout` con `elevation=0dp` (sin línea divisora bajo toolbar)
+- `tvEmptyState`: alpha=0.45, textSize=15sp (más discreto)
+
+**`item_fruit.xml`**
+- `MaterialCardView`: elevation=0dp, strokeWidth=0dp, cornerRadius=8dp, background=fruit_surface
+- Padding interno: 12dp horizontal + 12dp vertical
+- `tvFruitName`: 15sp bold
+- `chipFruitStatus`: 11sp, chipMinHeight=26dp, chipStrokeWidth=0dp, ensureMinTouchTargetSize=false
+- `tvFruitExpiry`: 12sp, alpha=0.55
+- `tvFruitQuantity`: 12sp, alpha=0.55, color neutro (eliminado verde bold anterior)
+
+### Estado al finalizar
+- `BUILD SUCCESSFUL` — sin errores ni warnings
+- Pendiente de rediseñar: `fragment_add_fruit.xml` (bottom sheet añadir/editar fruta)
+- Pendiente de probar en dispositivo físico: flujo completo del rediseño, especialmente `activity_result.xml` (imagen 200×200dp centerInside sin recorte)
+
+---
