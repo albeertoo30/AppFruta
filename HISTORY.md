@@ -161,3 +161,25 @@ Rediseño completo de la interfaz: sistema de diseño minimalista (blancos y ver
 - Pendiente de probar en dispositivo físico: flujo completo del rediseño, especialmente `activity_result.xml` (imagen 200×200dp centerInside sin recorte)
 
 ---
+
+## Sesión 4 — 2026-05-20
+
+### Objetivo
+Completar el rediseño de interfaz: `fragment_add_fruit.xml` (único archivo pendiente).
+
+### Cambios
+
+**`fragment_add_fruit.xml`**
+- `android:background="@color/fruit_background"` en el root `LinearLayout`
+- `app:boxCornerRadiusTopStart/End/BottomStart/End="12dp"` en los tres `TextInputLayout` (tilName, tilQuantity, tilExpiryDate)
+- `btnSave`: `cornerRadius` 12dp → 28dp (pildora), añadido `paddingTop/Bottom="14dp"`
+- `btnCancel`: añadido `android:alpha="0.6"` (jerarquía secundaria discreta)
+- `layout_marginBottom` de tilExpiryDate ajustado a 28dp para más espacio antes del botón
+
+### Estado al finalizar
+- `BUILD SUCCESSFUL` — sin errores ni warnings
+- **Rediseño UI completado al 100%** — todos los archivos de layout rediseñados
+- Pendiente: probar flujo completo en dispositivo físico (especialmente bottom sheet y `activity_result.xml`)
+- Siguiente fase: Fase 3 — Notificaciones push (FCM, alertas configurables de caducidad)
+
+---
