@@ -66,9 +66,3 @@ AppFruta/
 2. Asegurarse de que el archivo `modelo_fruta.tflite` está en `app/app/src/main/assets/`
 3. Ejecutar en emulador o dispositivo físico
 
----
-
-## Equipo
-
-Proyecto desarrollado por 5 personas como parte de una prueba de concepto
-para NTT Data.
